@@ -59,6 +59,27 @@ class SinglyLinkedList:
             current_node = current_node.next
         return current_node
 
+    def reverse(self):
+        current_head_node = self.head
+        self.tail = current_head_node
+        second_node = self.head.next
+        while(second_node):
+            temp_node = second_node.next
+            second_node.next = current_head_node
+            current_head_node = second_node
+            second_node = temp_node
+            # print('temp node-->', temp_node.value)
+            # current_head_node.next = temp_node.next
+            # temp_node.next = current_head_node
+            # current_head_node = second_node
+            # second_node = temp_node
+        self.head.next = None
+        self.head = current_head_node
+        print('reversed linked list--->', self.traverse())
+
+
+
+
 
 
 linked_list_obj = SinglyLinkedList()
@@ -69,5 +90,6 @@ linked_list_obj.append('C')
 linked_list_obj.append('D')
 linked_list_obj.append('E')
 linked_list_obj.insert_into_index(1, 'F')
-linked_list_obj.insert_into_index(10, 'end')
-linked_list_obj.insert_into_index(7, 'end')
+# linked_list_obj.insert_into_index(10, 'end')
+# linked_list_obj.insert_into_index(7, 'end')
+linked_list_obj.reverse()
